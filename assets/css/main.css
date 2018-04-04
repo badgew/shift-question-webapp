@@ -1,0 +1,377 @@
+@import "libs/bootstrap-grid.min.css";
+
+@font-face {
+    font-family: GTAmerica-Regular;
+    src: local("assets/fonts/GT-America-Standard-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GTAmerica-Regular;
+    font-weight: normal;
+    src: local("assets/fonts/GT-America-Standard-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GTAmerica-Medium;
+    src: local("assets/fonts/GT-America-Standard-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GTAmerica-Medium;
+    font-weight: medium;
+    src: local("assets/fonts/GT-America-Standard-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GTSectra-Book;
+    src: local("assets/fonts/GT-Sectra-Book.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: GTSectra-Book;
+    font-weight: normal;
+    src: local("assets/fonts/GT-Sectra-Book.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: BeirutDisplay-Regular;
+    src: local("assets/fonts/BeirutDisplay-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BeirutDisplay-Regular;
+    font-weight: normal;
+    src: local("assets/fonts/BeirutDisplay-Regular.otf") format("opentype");
+}
+
+body{
+	background-color:white;
+	color: black;
+	padding:0;
+	margin:0;
+	cursor:default;
+	position:relative;
+	font-family:GTAmerica-Regular;
+	width:100vw;
+	height:100%;
+	display:block;
+	overflow-x: hidden;
+
+	-webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+body.activeSearch{
+	background-color:#BDBEC5;
+	display:block;
+}
+
+*{
+    outline-color: transparent;
+    outline-style: none;
+}
+
+p{
+	font-size:11pt;
+	line-height:13pt;
+	letter-spacing:-.25pt;
+	font-weight:normal;
+	font-family:GTSectra-Book;
+}
+
+a{
+	font-size:20px;
+	line-height:1.1;
+	font-family:GTAmerica-Medium;
+	text-decoration:none;
+}
+
+h2{
+	margin-top:20px;
+	margin-bottom:10px;
+	font-size:20px;
+	line-height:1.1;
+	font-family:GTAmerica-Medium;
+	text-decoration:none;
+}
+
+h2:hover{
+	text-decoration:underline;
+}
+
+h3{
+	margin-top:20px;
+	margin-bottom:10px;
+	font-size:20px;
+	line-height:1.1;
+	font-family:GTAmerica-Regular;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+h4{
+	margin-top:10px;
+	margin-bottom:0px;
+	font-size:15px;
+	line-height:1.1;
+	color:black;
+	font-family:GTAmerica-Regular;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+
+h5{
+	margin-top:50px;
+	margin-bottom:0px;
+	font-size:15px;
+	line-height:1.1;
+	color:white;
+	font-family:GTAmerica-Regular;
+	font-weight:normal;
+}
+
+li{
+	list-style-type:none;
+}
+
+ul{
+	padding:0px;
+	margin:0px;
+	margin-bottom:100px;
+}
+
+span{
+	display:block;
+	padding-top:10px;
+	padding:left:10px;
+}
+
+#appSearch{
+	text-decoration:none;
+	color:black;
+	font-size:60pt;
+	line-height:65pt;
+	margin:150px;
+/*	padding-bottom:50px;*/
+	letter-spacing:-1pt;
+	font-family:BeirutDisplay-Regular;
+}
+
+input{
+	color:#ffdd2e;
+	font-family:BeirutDisplay-Regular;
+	font-size:60pt;
+	width:400px;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 4px solid black;
+	text-align:center;
+}
+
+input::-webkit-input-placeholder {
+color: #ffdd2e;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #ffdd2e;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #ffdd2e;
+}
+
+input:-ms-input-placeholder {
+color: #ffdd2e;
+}
+
+blockquote{
+	font-size: 60pt;
+	line-height:1.2;
+	font-family:BeirutDisplay-Regular;
+	color: black;
+	position: relative;
+}
+
+blockquote::before{
+	font-family:BeirutDisplay-Regular;
+	content: "\201C";
+	color:black;
+	font-size:60pt;
+	position: absolute;
+	left: -50px;
+}
+
+blockquote::after{
+  content: "\201D";
+}
+
+.twitterQuote{
+	font-size: 15pt;
+	line-height:1.1;
+	font-family:GTAmerica-Medium;
+	color: black;
+	position: relative;
+	text-decoration:none;
+}
+
+.twitterQuote::before{
+	font-family:GTAmerica-Medium;
+	content: "\201C";
+	color:black;
+	font-size:15pt;
+	position: absolute;
+	left: -10px;
+}
+
+.twitterQuote::after{
+  content: "\201D";
+}
+
+.container{
+  position:relative;
+  display:none;
+}
+
+body.activeSearch .container{
+	display:block;
+}
+
+body.activeSearch input{
+	color:white;
+}
+
+#articles h2 {
+  cursor: pointer;
+}
+
+#tweetIndex {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  -webkit-transition: opacity 500ms linear;
+  -ms-transition: opacity 500ms linear;
+  transition: opacity 500ms linear;
+}
+
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.introComment.visible {
+	opacity: 0;
+}
+
+.commentReady .introComment.visible{
+	opacity: 1;
+}
+
+/* draggable twitter cards */
+.draggable {
+	margin: 1%;
+	width: 250px;
+	height: auto;
+	min-height: 250px;
+	padding: 20px;
+	background-color: #ffdd2e;
+	box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+	color: #000;
+	position: absolute;
+	-webkit-transform: translate(0px, 0px);
+	transform: translate(0px, 0px);
+	overflow-x:hidden;
+	cursor:all-scroll;
+}
+
+.info-tab{
+	bottom:0px;
+	position:fixed;
+	overflow: hidden;
+	border-top: 1px solid #c5cfd4;
+	width:100%;
+	z-index:150;
+	background-color:white;
+	padding:10px;
+	height:63px;
+	-webkit-transition: all 1s ease;
+  	-moz-transition: all 1s ease;
+  	-o-transition: all 1s ease;
+  	-ms-transition: all 1s ease;
+  	transition: all 1s ease;
+}
+
+/* when we have this class, scroll back to 0 */
+.scroll-into-view.info-tab {
+  bottom:initial;
+  bottom:0;
+  height:100%;
+  opacity:0.9;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.info-container {
+  overflow: hidden;
+}
+
+.info-container span{
+	display:inline-block;
+	padding:0;
+	padding-left:10px;
+}
+
+.info-label{
+ 	text-align: left;
+	cursor: help;
+}
+
+.shift{
+	text-decoration:none;
+}
+
+.shift:hover{
+	text-decoration:underline;
+}
+
+.question{
+	text-decoration:none;
+}
+
+.question:hover{
+	text-decoration:underline;
+}
+
+.info-text{
+	position: relative;
+	display: none;
+	float: right;
+	padding-bottom: 10px;
+	padding-right: 85px;
+	width: 48.5%;
+	text-align: left;
+}
+
+.scroll-into-view .info-text{
+	display:inline-block;
+}
+
+.info-header{
+	display:inline-block;
+	margin-top:0;
+	margin-bottom:0;
+}
