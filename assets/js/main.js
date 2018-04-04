@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
   var appSettings = {
     twitter: {
       // url: 'http://localhost:5000/search?',
-      url: 'https://wb-thesis-twitter-api.herokuapp.com',
+      url: 'https://wb-thesis-twitter-api.herokuapp.com/search?',
       keyword: '',
       count: 100,
     },
