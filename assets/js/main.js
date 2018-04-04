@@ -17,20 +17,25 @@
    };
 })(jQuery);
 
-var placeholders = ['ignorance',,'moral','paranoia','unity','equality'];
+// var placeholders = ['ignorance','moral','paranoia','unity','equality'];
 
-(function cycle() { 
+// (function cycle() { 
 
-    var placeholder = placeholders.shift();
-    $('input').attr('placeholder',placeholder);
-    placeholders.push(placeholder);
-    setTimeout(cycle,1000);
+//     var placeholder = placeholders.shift();
+//     $('input').attr('placeholder',placeholder);
+//     placeholders.push(placeholder);
+//     setTimeout(cycle,1000);
 
-})();
+// })();
 
-
-
-
+var typed = new Typed('#typed', {
+  strings: ['ignorance','moral','paranoia','unity','equality'],
+    typeSpeed: 60,
+    backSpeed: 60,
+    attr: 'placeholder',
+    bindInputFocusEvents: true,
+    loop: true
+});
 
 var shiftLabel = ["structure", "meaning", "value", "patterns", "perspective"]
 var w = 0
