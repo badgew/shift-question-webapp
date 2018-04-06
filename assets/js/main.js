@@ -54,9 +54,6 @@ container_shift.addEventListener("mouseout", () => {
   word_shift.textContent = ""
 });
 
-
-
-
 var questionLabel = ["ideology", "symbolism", "division", "yourself"]
 var w = 0
 var interval
@@ -74,18 +71,11 @@ container_question.addEventListener("mouseout", () => {
   word_question.textContent = ""
 });
 
-
-
-
-
 // click the link to add a new class: see CSS
 $('.trigger').click(function(e){
   e.preventDefault();
   $('.info-tab').toggleClass('scroll-into-view');
 });
-
-
-
 
 var positonCard = function(){
 
@@ -247,6 +237,9 @@ jQuery(document).ready(function($) {
 
     // render the results from the Node App to our html
     var renderTweetSearch = function(data){
+
+      // clear any pre-existing tweets
+      $('#tweetIndex').find('.draggable').not( '.introComment').remove()
 
       // loop through twitter cards and render them....
       $.each(data.statuses, function(index, obj) {
