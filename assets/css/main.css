@@ -10,7 +10,7 @@
     src: 
     	local('GT America'),
     	local('GTAmerica-Regular'),
-    	url("assets/fonts/GT-America-Standard-Regular.otf") format("opentype");
+    	url("GT-America-Standard-Regular.otf");
 }
 
 /*@font-face {
