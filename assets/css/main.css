@@ -19,6 +19,16 @@
 }*/
 
 @font-face {
+    font-family: 'GT America';
+    font-weight:medium;
+    font-style:normal;
+    src: 
+    	local('GT America'),
+    	local('GTAmerica-Medium'),
+    	url("assets/fonts/GT-America-Standard-Medium.otf");
+}
+
+@font-face {
     font-family: GTAmerica-Medium;
     font-weight: medium;
     font-style:normal;
