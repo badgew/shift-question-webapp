@@ -1,24 +1,24 @@
 @import "libs/bootstrap-grid.min.css";
 
 @font-face {
-    font-family: 'GTAmerica Regular';
+    font-family: 'GT America Regular';
     font-weight:normal;
     font-style:normal;
-    src: url("../fonts/GT-America-Standard-Regular.otf");
+    src: url('../fonts/GT-America-Standard-Regular.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'GT America';
     font-weight:medium;
     font-style:normal;
-    src: url("../fonts/GT-America-Standard-Medium.otf");
+    src: url('../fonts/GT-America-Standard-Medium.otf') format('opentype');
 }
 
 @font-face {
     font-family: GTSectra-Book;
     font-weight: normal;
     font-style:normal;
-    src: url("../fonts/GT-Sectra-Book.ttf");
+    src: url('../fonts/GT-Sectra-Book.ttf') format('truetype');
 
 }
 
@@ -26,7 +26,7 @@
     font-family: BeirutDisplay-Regular;
     font-weight: normal;
     font-style:normal;
-    src: url("../fonts/BeirutDisplay-Regular.eot");
+    src: url('../fonts/BeirutDisplay-Regular.otf') format('opentype');
 }
 
 body{
