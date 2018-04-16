@@ -1,21 +1,21 @@
 @import "libs/bootstrap-grid.min.css";
 
 @font-face {
-    font-family: 'GT America Regular';
+    font-family: GT-America-Standard-Regular;
     font-weight:normal;
     font-style:normal;
     src: url('../fonts/GT-America-Standard-Regular.otf') format('opentype');
 }
 
 @font-face {
-    font-family: 'GT America';
+    font-family: GT-America-Standard-Medium;
     font-weight:medium;
     font-style:normal;
     src: url('../fonts/GT-America-Standard-Medium.otf') format('opentype');
 }
 
 @font-face {
-    font-family: GTSectra-Book;
+    font-family: GT-Sectra-Book;
     font-weight: normal;
     font-style:normal;
     src: url('../fonts/GT-Sectra-Book.ttf') format('truetype');
