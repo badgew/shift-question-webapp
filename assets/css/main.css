@@ -1,46 +1,54 @@
 @import "libs/bootstrap-grid.min.css";
 
-@font-face {
+/*@font-face {
     font-family: GTAmerica-Regular;
     src: local("assets/fonts/GT-America-Standard-Regular.otf") format("opentype");
-}
+}*/
 
 @font-face {
     font-family: GTAmerica-Regular;
     font-weight: normal;
+    font-style:normal;
+    src: url("assets/fonts/GT-America-Standard-Regular.eot");
     src: local("assets/fonts/GT-America-Standard-Regular.otf") format("opentype");
 }
 
-@font-face {
+/*@font-face {
     font-family: GTAmerica-Medium;
     src: local("assets/fonts/GT-America-Standard-Medium.otf") format("opentype");
-}
+}*/
 
 @font-face {
     font-family: GTAmerica-Medium;
     font-weight: medium;
+    font-style:normal;
+    src: url("assets/fonts/GT-America-Standard-Medium.eot");
     src: local("assets/fonts/GT-America-Standard-Medium.otf") format("opentype");
 }
 
-@font-face {
+/*@font-face {
     font-family: GTSectra-Book;
     src: local("assets/fonts/GT-Sectra-Book.ttf") format("truetype");
-}
+}*/
 
 @font-face {
     font-family: GTSectra-Book;
     font-weight: normal;
+    font-style:normal;
+    src: url("assets/fonts/GT-Sectra-Book.ttf");
     src: local("assets/fonts/GT-Sectra-Book.ttf") format("truetype");
 }
 
-@font-face {
+/*@font-face {
     font-family: BeirutDisplay-Regular;
     src: local("assets/fonts/BeirutDisplay-Regular.otf") format("opentype");
-}
+}*/
 
 @font-face {
     font-family: BeirutDisplay-Regular;
     font-weight: normal;
+    font-style:normal;
+    src: url("assets/fonts/BeirutDisplay-Regular.eot");
     src: local("assets/fonts/BeirutDisplay-Regular.otf") format("opentype");
 }
 
