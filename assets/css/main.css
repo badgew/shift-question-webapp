@@ -144,7 +144,7 @@ span{
 	font-family:BeirutDisplay-Regular;
 }
 
-input{
+#appSearch input{
 	color:#ffdd2e;
 	font-family:BeirutDisplay-Regular;
 	font-size:60pt;
@@ -224,8 +224,21 @@ body.activeSearch .container{
 	display:block;
 }
 
-body.activeSearch input{
+body.activeSearch #appSearch input{
 	color:white;
+}
+
+.submitComment{
+	display:none;
+}
+
+.submitCommentActive{
+	display:block;
+	z-index:100;
+}
+
+.articlesInactive{
+	opacity:0;
 }
 
 #articles h2 {

@@ -21,7 +21,22 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyASHMmD31I-i5T2-qfv1679Ijv0OWacjZw",
+    authDomain: "shiftquestion-f02ac.firebaseapp.com",
+    databaseURL: "https://shiftquestion-f02ac.firebaseio.com",
+    projectId: "shiftquestion-f02ac",
+    storageBucket: "shiftquestion-f02ac.appspot.com",
+    messagingSenderId: "1038252247626"
+  };
+  firebase.initializeApp(config);
+</script>
+
 </head>
 <body>
 
@@ -44,6 +59,16 @@
     <li class="introComment visible draggable">
       <a class="twitterQuote">Personally, &#8216;I&#8217; enjoy &#8216;quotes&#8217; that add the incorrect &#8216;emphasis.&#8217;</a>
     </li>
+
+    <li class="submitComment introComment visible draggable">
+      <form id="submission" accept-charset="utf-8">
+        <label>
+          <input type="input" id="writecomment" name="submission" placeholder="What do you have to say?" autocomplete="off"></input>
+          <input type="submit" value="Submit" name="submit" class="submit" id="submit" />
+        </label>
+      </form>
+    </li>
+
   </ul>
 </div>
 
@@ -68,7 +93,7 @@
 <script type="text/javascript" src="/assets/js/libs/interact.min.js"></script>
 <script type="text/javascript" src="/assets/js/libs/typed.js-master/lib/typed.js"></script>
 <script type="text/javascript" src="/assets/js/main.js"></script>
-
+<script type="text/javascript" src="/assets/js/firebase.js"></script>
 
 </body>
 </html>

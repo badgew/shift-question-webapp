@@ -97,13 +97,15 @@ var positonCard = function(){
 
 jQuery(document).ready(function($) {
 
+  var $twitterIndexEl = $("#tweetIndex");
+
   // Settings for the twitter api. These settings will get updated based on what the web user requests.
   var appSettings = {
     twitter: {
       // url: 'http://localhost:5000/search?',
       url: 'https://wb-thesis-twitter-api.herokuapp.com/search?',
       keyword: '',
-      count: 100,
+      count: 20,
     },
     news: {
       url: 'https://newsapi.org/v2/everything?',
@@ -177,6 +179,7 @@ jQuery(document).ready(function($) {
 
       // dont' do anything if there's no more cards to show
       if (twitterCards.length < 1) {
+        twitterCardsComplete()
         return
       }
 
@@ -232,7 +235,6 @@ jQuery(document).ready(function($) {
 
   var twitterApp = function(){
     // assign our html elements to variables here
-    var $twitterIndexEl = $("#tweetIndex")
     // var $twitterSearchFormEL = $("#twitterSearch")
 
     // render the results from the Node App to our html
@@ -274,6 +276,27 @@ jQuery(document).ready(function($) {
     };
   };
 
+  var reloadTwitterAppWithComments = function(commentData){
+    twitterCards = [];
+    $twitterIndexEl.empty();
+
+    // loop through twitter cards and render them....
+    $.each(commentData, function(index, object) {
+      this.id = "card-"+index;
+      console.log(object)
+      $twitterIndexEl.append("<li class='draggable "+this.id+" invisible'><p>"+object.comment+"</p></li>");
+
+      twitterCards.push({
+        'el': $twitterIndexEl.find('.'+this.id)
+      });
+
+    });
+
+    // initiate the twitter card draggable feature
+    draggableTwitterCards();
+    return
+  }
+
   var scrollDown = function(){
     $('html, body').animate({
         scrollTop: $("#articles").offset().top-100
@@ -297,9 +320,49 @@ jQuery(document).ready(function($) {
     });
   };
 
+  function twitterCardsComplete(){
+    $(".submitComment").addClass("submitCommentActive")
+
+    function commentSubmitted(){
+      $(".submitComment").removeClass("submitCommentActive")
+      firebase.database().ref('/comments').once('value').then(function(snapshot) {
+          console.log(snapshot.val())
+          var data=snapshot.val()
+
+          reloadTwitterAppWithComments(data);
+          $('#articles').addClass("articlesInactive")
+        });
+    }
+
+    function writeUserData(id, comment) {
+      // firebase.database().ref('comments/' + id).set({
+      //   comment: comment
+      // }).then(function(snapshot){
+      //   commentSubmitted()
+      // });
+      const ref = firebase.database().ref("/comments");
+      ref.set({comment: comment}).then(() => {
+        commentSubmitted();
+        ref.onDisconnect().cancel();
+      });
+    }
+
+    $('#submission').submit(function(event) {
+      event.preventDefault()
+        var comment = $("#submission :input").serializeArray();
+
+        var id=Math.round(new Date().getTime()/1000)
+        writeUserData(id, comment[0].value)
+        return false
+    }); 
+  }
+
   // init
   newsAPP();
   twitterApp();
   formWatcher();
 });
+
+
+
 
