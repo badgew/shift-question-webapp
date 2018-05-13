@@ -19,7 +19,7 @@
 
 // var placeholders = ['ignorance','moral','paranoia','unity','equality'];
 
-// (function cycle() { 
+// (function cycle() {
 
 //     var placeholder = placeholders.shift();
 //     $('input').attr('placeholder',placeholder);
@@ -121,15 +121,17 @@ jQuery(document).ready(function($) {
 
   var draggableTwitterCards = function(){
     // postion the starting twitter cards
-    $.each($('.draggable'), function(i, el){
+    $.each($('.draggable'), function(i, el) {
+      this.data = positonCard();
 
-      this.data = positonCard();
+      console.log('randomPosition: ', this.data);
 
-      $(el).css({
-        'top': this.data.y,
-        'left': this.data.x
-      });
-    });
+      $(el).css({        
+        'top': this.data.y,
+        'left': this.data.x      
+      });    
+    });
+
     // target elements with the "draggable" class
     interact('.draggable')
       .draggable({
@@ -173,7 +175,8 @@ jQuery(document).ready(function($) {
 
     // the number of twitter cards to reveal with each click
     var revealAmount = 1;
-      var zIndex=1;
+    var zIndex=1;
+
     // when you click on a article....
     $newsIndexEl.find('li').click(function(e){
 
@@ -253,8 +256,6 @@ jQuery(document).ready(function($) {
         });
       });
 
-      console.log(twitterCards);
-
       // initiate the twitter card draggable feature
       draggableTwitterCards();
     };
@@ -277,23 +278,38 @@ jQuery(document).ready(function($) {
   };
 
   var reloadTwitterAppWithComments = function(commentData){
-    twitterCards = [];
+    var twitterCards = [];
+    var zIndex = 1;
     $twitterIndexEl.empty();
 
     // loop through twitter cards and render them....
     $.each(commentData, function(index, object) {
       this.id = "card-"+index;
-      console.log(object)
-      $twitterIndexEl.append("<li class='draggable "+this.id+" invisible'><p>"+object.comment+"</p></li>");
 
-      twitterCards.push({
-        'el': $twitterIndexEl.find('.'+this.id)
-      });
+      if (object.comment) {
+        $twitterIndexEl.append("<li class='draggable "+this.id+" invisible'><p>"+object.comment+"</p></li>");
 
+        twitterCards.push({
+          'el': $twitterIndexEl.find('.'+this.id)
+        });
+      }
     });
 
     // initiate the twitter card draggable feature
-    draggableTwitterCards();
+    $.when(draggableTwitterCards()).then(()=> {
+
+      // scan through the list of twitter cards...
+      for (var i = twitterCards.length - 1; i >= 0; i--) {
+
+        // show the card
+        $(twitterCards[i].el).removeClass('invisible').addClass('visible').css('z-index', zIndex);
+
+        zIndex++;
+
+        // remove those from the list
+        twitterCards = twitterCards.slice(0, -1);
+      }
+    });
     return
   }
 
@@ -322,40 +338,45 @@ jQuery(document).ready(function($) {
 
   function twitterCardsComplete(){
     $(".submitComment").addClass("submitCommentActive")
-
-    function commentSubmitted(){
-      $(".submitComment").removeClass("submitCommentActive")
-      firebase.database().ref('/comments').once('value').then(function(snapshot) {
-          console.log(snapshot.val())
-          var data=snapshot.val()
-
-          reloadTwitterAppWithComments(data);
-          $('#articles').addClass("articlesInactive")
-        });
-    }
-
-    function writeUserData(id, comment) {
-      // firebase.database().ref('comments/' + id).set({
-      //   comment: comment
-      // }).then(function(snapshot){
-      //   commentSubmitted()
-      // });
-      const ref = firebase.database().ref("/comments");
-      ref.set({comment: comment}).then(() => {
-        commentSubmitted();
-        ref.onDisconnect().cancel();
-      });
-    }
-
-    $('#submission').submit(function(event) {
-      event.preventDefault()
-        var comment = $("#submission :input").serializeArray();
-
-        var id=Math.round(new Date().getTime()/1000)
-        writeUserData(id, comment[0].value)
-        return false
-    }); 
   }
+
+  function commentSubmitted(){
+
+    // hide the form...
+    $(".submitComment").removeClass("submitCommentActive");
+
+    // get all the comments from firebase
+    firebase.database().ref('/comments').once('value').then(function(snapshot) {
+      var data = snapshot.val();
+
+      // reload the twitter comments with the data
+      reloadTwitterAppWithComments(data);
+
+      // hide the articles
+      $('#articles').addClass("articlesInactive");
+    });
+  }
+
+  function writeUserData(id, newComment) {
+
+    let ref = firebase.database().ref('comments/' + id);
+    ref.set({comment: newComment}).then(() => {
+      console.log("done!");
+      commentSubmitted();
+    });
+  }
+
+  $('#submission').submit(function(event) {
+      event.preventDefault()
+      console.log("submit...");
+
+      var comment = $("#submission :input").serializeArray();
+      var id = Math.round(new Date().getTime()/1000);
+
+      writeUserData(id, comment[0].value);
+
+      return false
+  });
 
   // init
   newsAPP();
