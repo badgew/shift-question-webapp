@@ -156,6 +156,47 @@ span{
 	text-align:center;
 }
 
+input#submit{
+	display: block;
+    margin-top: 20px;
+    padding: 5px;
+	font-family:GT-America-Standard-Medium;
+	background-color:#ffdd2e;
+	font-weight:100;
+	cursor:normal;
+}
+
+input#submit:hover{
+	font-weight:800;
+	cursor:pointer;
+}
+
+.introComment input{
+	font-size:20px;
+	color:black;
+	border:none;
+	font-size:20px;
+	line-height:1.1;
+	font-family:GT-America-Standard-Regular;
+	text-decoration:none;
+}
+
+.introComment input::-webkit-input-placeholder {
+color: black;
+}
+
+.introComment input:-moz-placeholder { /* Firefox 18- */
+color: black;
+}
+
+.introComment input::-moz-placeholder {  /* Firefox 19+ */
+color: black;
+}
+
+.introComment input:-ms-input-placeholder {
+color: black;
+}
+
 input::-webkit-input-placeholder {
 color: #ffdd2e;
 }

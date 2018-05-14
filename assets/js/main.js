@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
       // url: 'http://localhost:5000/search?',
       url: 'https://wb-thesis-twitter-api.herokuapp.com/search?',
       keyword: '',
-      count: 20,
+      count: 10,
     },
     news: {
       url: 'https://newsapi.org/v2/everything?',
@@ -287,7 +287,7 @@ jQuery(document).ready(function($) {
       this.id = "card-"+index;
 
       if (object.comment) {
-        $twitterIndexEl.append("<li class='draggable "+this.id+" invisible'><p>"+object.comment+"</p></li>");
+        $twitterIndexEl.append("<li class='draggable "+this.id+" invisible'><a>"+object.comment+"</a></li>");
 
         twitterCards.push({
           'el': $twitterIndexEl.find('.'+this.id)
