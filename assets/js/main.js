@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
       keyword: '',
       count: 8,
       sources: 'cnn,bbc-news,abc-news,business-insider,fox-news,nbc-news,the-economist,the-huffington-post,the-new-york-times,the-washington-poster,time,usa-today',
-      from: '2017-01-01',
+      from: '2019-01-01',
       sortBy: 'relevance'
     }
   }
